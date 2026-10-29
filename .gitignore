@@ -1,0 +1,41 @@
+# Dependencias
+/vendor
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Entorno y credenciales
+.env
+.env.backup
+.env.production
+/auth.json
+
+# Artefactos de build y archivos generados
+/public/build
+/public/hot
+/public/storage
+/public_html/storage
+/public_html/hot
+/storage/*.key
+/storage/pail
+.phpunit.result.cache
+/.phpunit.cache
+
+# Paquetes de despliegue (ZIP para cPanel)
+*.zip
+
+# Logs y archivos del sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Editores y herramientas
+.phpactor.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+/.vagrant
+Homestead.json
+Homestead.yaml
