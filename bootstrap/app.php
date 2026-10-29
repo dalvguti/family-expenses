@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,16 +13,22 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Sesion por cookie para el SPA servido por el mismo Laravel.
+        $middleware->statefulApi();
+
         $middleware->api(prepend: [
             \App\Http\Middleware\HandleCors::class,
         ]);
-        
-        $middleware->alias([
-            'auth.jwt' => \App\Http\Middleware\JwtAuthMiddleware::class,
-            'auth.admin' => \App\Http\Middleware\AdminAuthMiddleware::class,
-        ]);
+
+        // La API responde 401 JSON. El resto vuelve al login del SPA.
+        $middleware->redirectGuestsTo(function (Request $request) {
+            if ($request->is('api/*') || $request->expectsJson()) {
+                return null;
+            }
+
+            return '/login';
+        });
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
-

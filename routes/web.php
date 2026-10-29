@@ -2,12 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return response()->json([
-        'message' => 'Family Expenses API',
-        'version' => '1.0.0',
-        'framework' => 'Laravel',
-        'api_prefix' => '/api',
-    ]);
-});
-
+// Devuelve el shell de la SPA para cualquier ruta que no sea la API,
+// de modo que React Router maneje el enrutamiento del lado del cliente.
+Route::get('/{any?}', function () {
+    return view('app');
+})->where('any', '^(?!api).*$');

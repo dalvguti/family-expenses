@@ -1,0 +1,117 @@
+/* Users Page Specific Styles */
+/* Common styles are imported from Common.css */
+
+.users-page {
+  max-width: 1200px;
+}
+
+.user-form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.user-form-container h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.user-form {
+  max-width: 600px;
+}
+
+/* Users grid */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-header {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-card h3 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.user-email {
+  margin: 0 0 10px 0;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.role-badge.admin {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.role-badge.member {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* No users message */
+.no-users {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
